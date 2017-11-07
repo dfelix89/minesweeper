@@ -1,14 +1,17 @@
-console.log("This is what an empty board would look like:");
+const printBoard = board => {
+    console.log('Current Board:');
+    console.log(board[0].join(' | '));
+    console.log(board[1].join(' | '));
+    console.log(board[2].join(' | '));
+};
 
-const blankLine = '   |   |   ';
-for (let i = 0; i < 3; i++) {
-  console.log(blankLine);  
-}
+let board = [ 
+    [' ', ' ', ' '],
+    [' ', ' ', ' '],
+    [' ', ' ', ' ']
+];
 
-console.log("This is what a board with a guess and a bomb on it would look like:");
-const guessLine = '1  |   |   ';
-const bombLine = '   | B |   ';
-
-console.log(guessLine); 
-console.log(bombLine); 
-console.log(blankLine); 
+printBoard(board);
+board[0][1] = '1';
+board[2][2] = 'B';
+printBoard(board);
