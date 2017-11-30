@@ -3,7 +3,7 @@ export class Board {
         this._numberOfBombs = numberOfBombs;
         this._numberOfTiles = numberOfRows * numberOfColumns;
         this._playerBoard = Board.generatePlayerBoard(numberOfRows, numberOfColumns);
-        this._bombBoard = Board.generateBombBoard(numberOfRows, numberOfColumns);
+        this._bombBoard = Board.generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs);
     }
     
     get playerBoard() {
@@ -31,7 +31,7 @@ export class Board {
         const neighborRowIndex = rowIndex + offset[0];
         const neighborColumnIndex = columnIndex + offset[1];
         if (neighborRowIndex >= 0 && neighborRowIndex < numberOfRows && neighborColumnIndex >= 0 && neighborColumnIndex < numberOfColumns) {
-            if (this._bombBoard[neighborRowIndex][0] == 'B') {
+            if (this._bombBoard[neighborRowIndex][neighborColumnIndex] == 'B') {
                 numberOfBombs++;
             }
         }
@@ -79,9 +79,6 @@ static generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs) {
              board[randomRowIndex][randomColumnIndex] = 'B';
              numberOfBombsPlaced++;
         }
-        board[randomRowIndex][randomColumnIndex] = 'B';
-        numberOfBombsPlaced++;
-        
         
     }
     

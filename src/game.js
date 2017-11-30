@@ -20,7 +20,7 @@ class Game {
         if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
             console.log('Game over');
             this._board.print();
-        } else if (this._board.hasSafeTiles()) {
+        } else if (!this._board.hasSafeTiles()) {
             console.log('Congrats, you have won!');
             this._board.print();
         } else {
